@@ -1,9 +1,11 @@
 // File: server.js
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Import CORS middleware
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true })); // To parse POST data
+app.use(cors()); // Enable CORS for all origins
+app.use(bodyParser.urlencoded({ extended: true })); // Parse POST data
 
 app.post('/ussd', (req, res) => {
   const { sessionId, serviceCode, text } = req.body;
